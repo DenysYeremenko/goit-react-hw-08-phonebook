@@ -15,6 +15,15 @@ export const ContactForm = () => {
       elements: { name, number },
     } = event.target;
 
+    if (
+      contacts.findIndex(
+        contact => contact.name.toLowerCase() === name.value.toLowerCase()
+      ) >= 0
+    ) {
+      alert(`${name.value} is already in contacts.`);
+      return;
+    }
+
     const contact = {
       name: name.value,
       number: number.value,
@@ -22,7 +31,6 @@ export const ContactForm = () => {
     };
 
     dispatch(addContact(contact));
-    localStorage.setItem('contacts', JSON.stringify([...contacts, contact]));
     event.target.reset();
   };
 

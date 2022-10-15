@@ -1,19 +1,13 @@
 import style from './ContactItem.module.css';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contactsSlice';
-import { getContacts } from 'redux/selectors';
 
 export const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
 
   const deleteHandler = () => {
     dispatch(deleteContact(contact.id));
-    localStorage.setItem(
-      'contacts',
-      JSON.stringify(contacts.filter(({ id }) => id !== contact.id))
-    );
   };
 
   return (
