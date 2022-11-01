@@ -1,30 +1,35 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { ContactFilter } from './ContactFilter/ContactFilter';
-import style from './App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from 'redux/selectors';
+import { Layout } from './Layout/Layout';
+import { Route, Routes } from 'react-router-dom';
+import { LoginView } from 'pages/LoginView/LoginView';
+import { RegisterView } from 'pages/RegisterView/RegisterView';
+import { ContactsView } from 'pages/ContactsView/ContactsView';
+import { HomeView } from 'pages/HomeView/HomeView';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/auth/operations';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
-import { Spinner } from './Spinner/Spinner';
+import { useAuth } from 'hooks/useAuth';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
-  return (
+
+  return isRefreshing ? (
+    <h1>'Refreshing...'</h1>
+  ) : (
     <>
-      {isLoading && <Spinner />}
-      {error && <p>{error}</p>}
-      <h1 className={style.phonebookHeader}>Phonebook</h1>
-      <ContactForm />
-      <h2 className={style.contactsHeader}>Contacts</h2>
-      <ContactFilter />
-      <ContactList />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          HomeView
+          <Route index element={<HomeView />} />
+          <Route path="contacts" element={<ContactsView />} />
+          <Route path="login" element={<LoginView />} />
+          <Route path="register" element={<RegisterView />} />
+        </Route>
+      </Routes>
     </>
   );
 };
