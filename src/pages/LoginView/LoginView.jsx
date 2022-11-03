@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { logIn } from 'redux/auth/operations';
 
-export const LoginView = props => {
+export const LoginView = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {

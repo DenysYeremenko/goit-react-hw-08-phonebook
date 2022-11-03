@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { register } from 'redux/auth/operations';
 
-export const RegisterView = props => {
+export const RegisterView = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -109,48 +109,3 @@ export const RegisterView = props => {
     </ThemeProvider>
   );
 };
-
-//   return (
-//     <Box
-//       component="form"
-//       sx={{
-//         '& .MuiTextField-root': { m: 1, width: '25ch' },
-//       }}
-//       noValidate
-//       autoComplete="off"
-//       onSubmit={handleSubmit}
-//     >
-//       <TextField required id="outlined" name="name" label="Username" />
-//       <TextField required id="outlined" name="email" label="Email" />
-//       <TextField
-//         required
-//         id="outlined-password-input"
-//         label="Password"
-//         type="password"
-//         autoComplete="current-password"
-//         name="password"
-//       />
-//       <Button variant="contained" type="submit">
-//         Register
-//       </Button>
-//     </Box>
-//   );
-// };
-
-// {/* // <div>
-//     //   <form onSubmit={handleSubmit}>
-//     //     <label htmlFor="">
-//     //       Username
-//     //       <input type="text" name="name" />
-//     //     </label>
-//     //     <label htmlFor="">
-//     //       Email
-//     //       <input type="text" name="email" />
-//     //     </label>
-//     //     <label htmlFor="">
-//     //       Password
-//     //       <input type="text" name="password" />
-//     //     </label>
-//     //     <button type="submit">Register</button>
-//     //   </form>
-//     // </div> */}

@@ -14,10 +14,6 @@ import { authReducer } from './auth/slice';
 import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
 
-// const customizedMiddleware = getDefaultMiddleware({
-//   serializableCheck: false,
-// });
-
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {

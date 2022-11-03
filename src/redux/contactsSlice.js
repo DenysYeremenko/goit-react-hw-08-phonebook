@@ -57,39 +57,6 @@ const contactsSlice = createSlice({
       state.error = action.payload;
     },
   },
-  // reducers: {
-  //   addContact: {
-  //     // reducer(state, action) {
-  //     //   state.items.push(action.payload);
-  //     // },
-  //     // prepare({ name, number, id }) {
-  //     //   return {
-  //     //     payload: {
-  //     //       name,
-  //     //       number,
-  //     //       id,
-  //     //     },
-  //     //   };
-  //     // },
-  //   },
-  //   fetchingInProgress(state) {
-  //     state.isLoading = true;
-  //   },
-  //   fetchingSuccess(state, action) {
-  //     state.isLoading = false;
-  //     state.error = null;
-  //     state.items = action.payload;
-  //   },
-  //   fetchingError(state, action) {
-  //     state.isLoading = false;
-  //     state.error = action.payload;
-  //   },
-  //   deleteContact(state, action) {
-  //     // const index = state.items.findIndex(task => task.id === action.payload);
-  //     // state.items.splice(index, 1);
-  //   },
-
-  // },
 });
 
 export const contactsReducer = contactsSlice.reducer;
